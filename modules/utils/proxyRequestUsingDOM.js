@@ -45,7 +45,8 @@ var READ_LOADING_STATE = true;
 function proxyRequestUsingDOM(conn, location) {
   return new AbortablePromise(function (resolve, reject, onAbort) {
     var xhr = new XMLHttpRequest;
-    xhr.open(conn.method, location.href, true);
+    var href = conn.location.href == '/' ? location.href : conn.location.href; // need query string when location.href
+    xhr.open(conn.method, href, true);
 
     if ('withCredentials' in xhr && conn.withCredentials)
       xhr.withCredentials = true;

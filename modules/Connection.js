@@ -201,7 +201,7 @@ Object.defineProperties(Connection.prototype, {
    */
   call: d(function (app) {
     if (typeof app !== 'function')
-      app = createProxy(app || this);
+      app = createProxy(app || this.location);
 
     var conn = this;
 
